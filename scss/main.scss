@@ -1,0 +1,301 @@
+$main-bgcolor: #170e05;
+$important-color: #b06823;
+$button-bgcolor: #634a32;
+$section-bgcolor: rgba(#dfcfc2, 0.4);
+
+@mixin easeOut300 {
+  transition: all 300ms ease-out;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Candara';
+  // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+p {
+  line-height: 1.3rem;
+
+  &:not(:last-child) {
+    margin-bottom: 0.7rem;
+  }
+}
+
+.main-container {
+  min-height: calc(100% - 230px);
+  margin-bottom: 100px;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mainNav {
+  text-align: center;
+  background-color: $main-bgcolor;
+  padding: 20px;
+}
+
+.nav-header img {
+  width: 100px;
+}
+
+.nav-menu {
+  margin-top: 10px;
+
+  a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 2px 0;
+    width: 120px;
+    background-color: $button-bgcolor;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+
+    &.reservation {
+      background-color: $important-color;
+    }
+  }
+}
+
+.page-header {
+  width: 300px;
+  margin: 30px auto 20px;
+  padding: 5px;
+  color: $main-bgcolor;
+  text-align: center;
+  background-color: $section-bgcolor;
+
+  * {
+    font-weight: 400;
+  }
+}
+
+.page-footer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  background-color: $main-bgcolor;
+  box-shadow: inset 0 5px 0 $important-color, inset 0 -5px 0 darken($main-bgcolor, 5);
+
+  &::before {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    height: 20px;
+    background-color: inherit;
+    box-shadow: inset 0 3px 0 $important-color, inset 0 -3px 0 darken($main-bgcolor, 5);
+    content: '';
+  }
+
+  img {
+    width: 300px;
+  }
+}
+
+/* ======================================================================================================== */
+
+// Home page
+
+body#home {
+  background-color: $main-bgcolor;
+  overflow: hidden;
+
+  .container {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #634a32;
+
+    h2,
+    h3 {
+      font-weight: 400;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: $important-color;
+    }
+  }
+
+  .header-logo img {
+    width: 180px;
+    height: auto;
+  }
+
+  .text-action {
+    margin-top: 40px;
+  }
+
+  .action-button a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: $important-color;
+    color: black;
+    box-shadow: inset 0 2px 2px lighten($important-color, 10),
+      inset 0 -5px 2px darken($important-color, 8);
+
+    &:hover {
+      background-color: darken($important-color, 5);
+    }
+
+    &:active {
+      background-color: darken($important-color, 10);
+      box-shadow: none;
+    }
+  }
+
+  .slideshow {
+    width: 50%;
+    background: no-repeat center / cover url(../images/home-01.jpg);
+  }
+}
+
+/* ======================================================================================================== */
+
+// About page
+
+body#about {
+  .page-headImage {
+    width: 100%;
+    height: 600px;
+    background: url(../images/shopview.jpg) no-repeat center 10% / cover;
+  }
+
+  .page-content {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px 60px;
+    background-color: $section-bgcolor;
+  }
+}
+
+/* ======================================================================================================== */
+
+// Gallery page
+
+body#gallery {
+  .tools-showcase {
+    display: flex;
+    align-items: center;
+    background-color: $section-bgcolor;
+    margin-bottom: 40px;
+  }
+
+  .tools-image {
+    flex: 1;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .tools-text {
+    width: 50%;
+    padding: 40px 80px;
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      color: $button-bgcolor;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  .haircut-slideshow {
+    position: relative;
+
+    header {
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      color: $button-bgcolor;
+      text-align: center;
+
+      h2 {
+        font-weight: 400;
+      }
+    }
+
+    .slide-images {
+      display: flex;
+      align-items: center;
+      overflow-x: hidden;
+      height: 440px;
+
+      img {
+        position: relative;
+        display: inline-block;
+        height: 300px;
+        border: 10px solid white;
+        box-shadow: 0 0 5px 2px rgba(black, 0.5);
+
+        &.active {
+          position: relative;
+          transform: scale(1.3);
+          z-index: 1;
+        }
+      }
+    }
+
+    .slide-control {
+      position: absolute;
+      padding: 0 10px;
+      background-color: #ddd;
+      opacity: 0.5;
+      border: none;
+      text-align: center;
+      font-size: 4rem;
+      cursor: pointer;
+      @include easeOut300();
+
+      &::before {
+        position: relative;
+        top: -5px;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &.left {
+        left: 20px;
+
+        &::before {
+          content: '<';
+        }
+      }
+
+      &.right {
+        right: 20px;
+
+        &::before {
+          content: '>';
+        }
+      }
+    }
+  }
+}
