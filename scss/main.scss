@@ -268,11 +268,12 @@ body#gallery {
       }
     }
 
-    .slide-images {
+    .slide-panel {
       display: flex;
       align-items: center;
       overflow-x: hidden;
       height: 440px;
+      @include easeOut300();
 
       img {
         position: relative;
@@ -280,6 +281,7 @@ body#gallery {
         height: 300px;
         border: 10px solid white;
         box-shadow: 0 0 5px 2px rgba(black, 0.5);
+        @include easeOut300();
 
         &.active {
           position: relative;
@@ -291,12 +293,14 @@ body#gallery {
 
     .slide-control {
       position: absolute;
+      z-index: 2;
       padding: 0 10px;
       background-color: #ddd;
       opacity: 0.5;
       border: none;
       text-align: center;
       font-size: 4rem;
+      outline: none;
       cursor: pointer;
       @include easeOut300();
 

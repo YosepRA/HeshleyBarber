@@ -13,6 +13,8 @@ Properties:
 - `outerWidth` → Viewport's width **with** browser's header.
 - `scrollY` / `pageYOffset` → The amount of `px` from the topmost side.
 - `scrollX` / `pageXOffset` → The amount of `px` from the leftmost side.
+- `screenLeft` → When the browser window is minimized, this will get the amount of `px` from device screen's left side (Same law like how viewport's coordinate work).
+- `screenTop` → When the browser window is minimized, this will get the amount of `px` from device screen's top side (Same law like how viewport's coordinate work).
 
 Methods:
 - `scroll` → Scroll to provided coordinate.
