@@ -1,0 +1,14 @@
+body#about {
+  .page-headImage {
+    width: 100%;
+    height: 600px;
+    background: url(../images/shopview.jpg) no-repeat center 10% / cover;
+  }
+
+  .page-content {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px 60px;
+    background-color: $section-bgcolor;
+  }
+}

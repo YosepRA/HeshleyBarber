@@ -1,0 +1,36 @@
+$main-bgcolor: #170e05;
+$important-color: #b06823;
+$button-bgcolor: #634a32;
+$section-bgcolor: rgba(#dfcfc2, 0.4);
+
+@font-face {
+  font-family: 'Pristina';
+  src: url('../fonts/pristina.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Candara';
+  src: url('../fonts/candara.ttf') format('truetype');
+}
+
+@mixin easeOut300 {
+  transition: all 300ms ease-out;
+}
+
+@mixin generalBtn {
+  display: inline-block;
+  padding: 5px 0;
+  border: none;
+  background-color: $button-bgcolor;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($button-bgcolor, 5);
+  }
+
+  &:active {
+    background-color: darken($button-bgcolor, 10);
+  }
+}
