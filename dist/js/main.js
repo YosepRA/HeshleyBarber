@@ -27,6 +27,29 @@ function removeLocalStorage(key) {
   return 'Data removed.';
 }
 
+// SESSION STORAGE
+// Session storage save.
+function saveSessionStorage(key, data) {
+  sessionStorage.setItem(key, JSON.stringify(data));
+  return 'Data saved.';
+}
+
+// Local storage load.
+function loadSessionStorage(key) {
+  return JSON.parse(sessionStorage.getItem(key));
+}
+
+// Remove all from storage.
+function removeSessionStorage(key) {
+  sessionStorage.removeItem(key);
+  return 'Data removed.';
+}
+
+function saveInputToStorage(key, value) {
+  let retrievedData = loadSessionStorage('reservation') || {};
+  saveSessionStorage('reservation', Object.assign(retrievedData, { [key]: value }));
+}
+
 // Fetching and parsing as JSON object.
 async function retrieveJSON(path) {
   return await fetch(path)

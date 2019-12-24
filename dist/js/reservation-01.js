@@ -1,16 +1,59 @@
 let timeData;
-let datePickerInputField = document.querySelector('.datePicker-inputField input');
-let datePickerSelectBtn = document.querySelector('.datePicker-selectBtn');
 let timeTable = document.querySelector('.time-timetable');
-let cards = document.querySelectorAll('.cards label');
+let cardsContainer = document.querySelector('.cards');
 
-datePickerSelectBtn.addEventListener('click', () => {
-  if (!datePickerInputField.value) {
-    datePickerInputField.reportValidity();
-    return;
+function docReady(cb) {
+  if (document.readyState !== 'loading') cb();
+  else document.addEventListener('DOMContentLoaded', cb);
+}
+
+function init() {
+  let datePickerInputField = document.querySelector('.datePicker-inputField input');
+  let datePickerSelectBtn = document.querySelector('.datePicker-selectBtn');
+  let cards = cardsContainer.querySelectorAll('input');
+  let nextBtn = document.querySelector('.action-buttons a');
+
+  datePickerSelectBtn.addEventListener('click', () => {
+    if (!datePickerInputField.value) {
+      datePickerInputField.reportValidity();
+      return;
+    }
+    generateTimeTable(datePickerInputField.value);
+  });
+
+  timeTable.addEventListener('click', event => {
+    if (event.target.tagName !== 'BUTTON') return;
+    let timestamp = event.target.closest('.timestamp');
+    timestamp.click();
+  });
+
+  cardsContainer.addEventListener('click', event => {
+    if (event.target.tagName !== 'BUTTON') return;
+    let card = event.target.closest('.card');
+    card.click();
+  });
+
+  for (const card of cards) {
+    card.addEventListener('change', () => {
+      saveInputToStorage('package', card.value);
+    });
   }
-  generateTimeTable(datePickerInputField.value);
-});
+
+  nextBtn.addEventListener('click', event => {
+    let timeStamps = Array.from(document.querySelectorAll('input[name="timestamp"]'));
+    let packages = Array.from(document.querySelectorAll('input[name="package"]'));
+    let isChecked = inputArray => {
+      return inputArray.some(input => input.checked);
+    };
+
+    if (!isChecked(timeStamps) || !isChecked(packages)) {
+      event.preventDefault();
+      alert('Please fill all of the required inputs.');
+    }
+  });
+}
+
+docReady(init);
 
 /* ======================================================================================================== */
 
@@ -28,7 +71,8 @@ function generateTimeTable(dateString) {
           name: 'timestamp',
           value: time,
           disabled: isReserved,
-          onchange: toggleService
+          required: true,
+          onchange: timeStampChange
         }),
         elt(
           'div',
@@ -53,20 +97,28 @@ function generateTimeTable(dateString) {
   });
 }
 
-function toggleService(event) {
+function timeStampChange(event) {
   let timeStampInputs = document.querySelectorAll('input[name="timestamp"]');
   let input = event.target;
   let inputIndex = Array.from(timeStampInputs).indexOf(input);
   let twoTimeStamp = timeData.slice(inputIndex, inputIndex + 2);
 
+  // Save chosen timestamp to session storage.
+  saveInputToStorage('time', input.value);
+
+  // Toggle services availablity.
   if (twoTimeStamp.some(t => t.isReserved) || twoTimeStamp.length < 2) {
-    for (let i = 1; i < cards.length; i++) {
-      cards[i].style.display = 'none';
+    for (let i = 1; i < cardsContainer.children.length; i++) {
+      cardsContainer.children[i].classList.add('hide');
     }
   } else {
-    for (let i = 1; i < cards.length; i++) {
-      cards[i].style.display = '';
+    for (let i = 1; i < cardsContainer.children.length; i++) {
+      cardsContainer.children[i].classList.remove('hide');
     }
+  }
+  // Reset input's checked status.
+  for (const cardInput of cardsContainer.querySelectorAll('input')) {
+    cardInput.checked = false;
   }
 }
 

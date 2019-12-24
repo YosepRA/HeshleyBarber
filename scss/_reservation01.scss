@@ -3,6 +3,10 @@ body#reservation-01 {
     @include generalBtn();
   }
 
+  .side-note {
+    text-align: center;
+  }
+
   .input-group {
     margin-bottom: 20px;
   }
@@ -148,13 +152,18 @@ body#reservation-01 {
       display: block;
       width: 20%;
       margin: 0 10px;
+
+      &.hide {
+        display: none;
+      }
     }
 
     input[type='radio'] {
       display: none;
 
       &:checked ~ .card {
-        box-shadow: 0 0 0 10px #dfcfc2;
+        box-shadow: 0 0 20px rgba(black, 1);
+        transform: scale(1.05);
         z-index: 1;
       }
     }
@@ -164,12 +173,21 @@ body#reservation-01 {
     position: relative;
     background-color: #dfcfc2;
     border: 1px solid #000;
+    cursor: pointer;
 
     &.premium {
       .card-header,
       .card-action {
         background-color: $important-color;
       }
+    }
+
+    &:hover {
+      background-color: darken(#dfcfc2, 5);
+    }
+
+    &:active {
+      background-color: darken(#dfcfc2, 8);
     }
   }
 
