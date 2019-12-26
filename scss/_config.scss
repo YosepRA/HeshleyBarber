@@ -13,6 +13,10 @@ $section-bgcolor: rgba(#dfcfc2, 0.4);
   src: url('../fonts/candara.ttf') format('truetype');
 }
 
+@mixin easeOut200 {
+  transition: all 200ms ease-out;
+}
+
 @mixin easeOut300 {
   transition: all 300ms ease-out;
 }

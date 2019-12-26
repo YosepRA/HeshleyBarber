@@ -1,3 +1,7 @@
+let navbar = document.querySelector('.mainNav');
+
+/* ======================================================================================================== */
+
 function elt(type, props, ...children) {
   let dom = document.createElement(type);
   if (props) Object.assign(dom, props);
@@ -50,6 +54,11 @@ function saveInputToStorage(key, value) {
   saveSessionStorage('reservation', Object.assign(retrievedData, { [key]: value }));
 }
 
+function docReady(cb) {
+  if (document.readyState !== 'loading') cb();
+  else document.addEventListener('DOMContentLoaded', cb);
+}
+
 // Fetching and parsing as JSON object.
 async function retrieveJSON(path) {
   return await fetch(path)
@@ -61,4 +70,13 @@ async function retrieveJSON(path) {
 
 function notImplementedAlert(name) {
   alert(`I'm sorry. '${name}' functionality hasn't been implemented.`);
+}
+
+// Given a number data type, return the start padded string of it.
+function padStartNumber(num, amount, char) {
+  return String(num).padStart(amount, char);
+}
+
+function removeAllChild(parent) {
+  while (parent.firstChild) parent.firstChild.remove();
 }

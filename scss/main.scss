@@ -52,9 +52,26 @@ p {
     font-size: 1.2rem;
     text-decoration: none;
     color: black;
+    @include easeOut200();
+
+    &:hover {
+      background-color: darken($button-bgcolor, 5);
+    }
+
+    &:active {
+      background-color: darken($button-bgcolor, 10);
+    }
 
     &.reservation {
       background-color: $important-color;
+
+      &:hover {
+        background-color: darken($important-color, 5);
+      }
+
+      &:active {
+        background-color: darken($important-color, 10);
+      }
     }
   }
 }
@@ -123,3 +140,5 @@ p {
 @import 'reservation01';
 
 @import 'reservation02';
+
+@import 'reservation-preview';

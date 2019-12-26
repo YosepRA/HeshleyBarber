@@ -2,11 +2,6 @@ let timeData;
 let timeTable = document.querySelector('.time-timetable');
 let cardsContainer = document.querySelector('.cards');
 
-function docReady(cb) {
-  if (document.readyState !== 'loading') cb();
-  else document.addEventListener('DOMContentLoaded', cb);
-}
-
 function init() {
   let datePickerInputField = document.querySelector('.datePicker-inputField input');
   let datePickerSelectBtn = document.querySelector('.datePicker-selectBtn');
@@ -35,13 +30,13 @@ function init() {
 
   for (const card of cards) {
     card.addEventListener('change', () => {
-      saveInputToStorage('package', card.value);
+      saveInputToStorage('servicePackage', card.value);
     });
   }
 
   nextBtn.addEventListener('click', event => {
     let timeStamps = Array.from(document.querySelectorAll('input[name="timestamp"]'));
-    let packages = Array.from(document.querySelectorAll('input[name="package"]'));
+    let packages = Array.from(document.querySelectorAll('input[name="servicePackage"]'));
     let isChecked = inputArray => {
       return inputArray.some(input => input.checked);
     };
@@ -120,15 +115,6 @@ function timeStampChange(event) {
   for (const cardInput of cardsContainer.querySelectorAll('input')) {
     cardInput.checked = false;
   }
-}
-
-// number → string
-function padStartNumber(num, amount, char) {
-  return String(num).padStart(amount, char);
-}
-
-function removeAllChild(parent) {
-  while (parent.firstChild) parent.firstChild.remove();
 }
 
 /* ======================================================================================================== */

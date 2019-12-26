@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get a fresh new haircut for your next special event." />
+    <link rel="stylesheet" href="css/main.min.css" />
+    <title>Heshley Barber</title>
+  </head>
+  <body id="reservation-02">
+    <nav class="mainNav">
+      <header class="nav-header">
+        <a href="./">
+          <img src="images/logo-full.png" alt="Heshley Barber Logo" class="header-logo" />
+        </a>
+      </header>
+
+      <section class="nav-menu">
+        <a href="./" class="menu-item">Home</a>
+        <a href="about.html" class="menu-item">About</a>
+        <a href="reservation-01.html" class="menu-item reservation">Reservation</a>
+        <a href="gallery.html" class="menu-item">Gallery</a>
+      </section>
+    </nav>
+
+    <div class="main-container">
+      <header class="page-header">
+        <h1>Reservation</h1>
+      </header>
+
+      <main class="page-content container">
+        <div class="side-note">
+          <em>Note: All inputs are required.</em>
+        </div>
+
+        <section class="form-section date-package">
+          <header class="section-header">
+            <h2>Date &amp; Package</h2>
+          </header>
+
+          <section class="section-input">
+            <div class="input-group">
+              <div class="input-label">Date/Time</div>
+              <div class="input-data time">: <span></span></div>
+            </div>
+
+            <div class="input-group">
+              <div class="input-label">Service package</div>
+              <div class="input-data package">: <span></span></div>
+            </div>
+          </section>
+        </section>
+
+        <section class="form-section personal-info">
+          <header class="section-header">
+            <h2>Personal Information</h2>
+          </header>
+
+          <section class="section-input">
+            <div class="input-group">
+              <label for="personal-name" class="input-label">Name: </label>
+              <input
+                type="text"
+                name="personal-name"
+                id="personal-name"
+                class="input-field"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="personal-id" class="input-label">Identification number: </label>
+              <input
+                type="number"
+                name="personal-id"
+                id="personal-id"
+                class="input-field"
+                required
+              />
+            </div>
+          </section>
+        </section>
+
+        <section class="form-section payment-info">
+          <header class="section-header">
+            <h2>Payment Information</h2>
+          </header>
+
+          <section class="section-input">
+            <div class="input-group">
+              <label for="payment-name" class="input-label">Name: </label>
+              <input
+                type="text"
+                name="payment-name"
+                id="payment-name"
+                class="input-field"
+                required
+              />
+            </div>
+
+            <div class="input-group expDate-securityCode">
+              <div class="input-expDate">
+                <label for="payment-expDate" class="input-label">Expiration date: </label>
+                <input
+                  type="date"
+                  name="payment-expDate"
+                  id="payment-expDate"
+                  class="input-field"
+                  required
+                />
+              </div>
+              <div class="input-securityCode">
+                <label for="payment-securityCode" class="input-label">Security code: </label>
+                <input
+                  type="text"
+                  name="payment-securityCode"
+                  id="payment-securityCode"
+                  class="input-field"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="payment-cardNumber" class="input-label">Credit card number: </label>
+              <input
+                type="number"
+                name="payment-cardNumber"
+                id="payment-cardNumber"
+                class="input-field"
+                required
+              />
+            </div>
+          </section>
+        </section>
+
+        <section class="action-buttons">
+          <a href="reservation-01.html">Prev step</a>
+          <a href="reservation-preview.html" class="button-preview">Preview</a>
+        </section>
+      </main>
+    </div>
+
+    <footer class="page-footer">
+      <img
+        src="images/address.png"
+        alt="Shop's address: 4940 Simpson Street Prairie City, IL 61470"
+      />
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/reservation-02.js"></script>
+  </body>
+</html>
