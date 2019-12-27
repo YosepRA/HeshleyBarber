@@ -1,4 +1,21 @@
 let navbar = document.querySelector('.mainNav');
+let navToggler = navbar.querySelector('.nav-toggler');
+
+window.addEventListener('scroll', () => {
+  if (pageYOffset > navbar.clientHeight && navbar.className.includes('scrolled')) return;
+
+  if (pageYOffset > navbar.clientHeight) {
+    navbar.classList.add('scrolled');
+    navToggler.classList.remove('d-none');
+  } else {
+    navbar.classList.remove('scrolled');
+    navToggler.classList.add('d-none');
+  }
+});
+
+navToggler.addEventListener('click', () => {
+  navbar.classList.toggle('scrolled');
+});
 
 /* ======================================================================================================== */
 

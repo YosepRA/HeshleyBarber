@@ -44,9 +44,11 @@ class SlideShow {
       // If next image's horizontal position is on the right side of panel's mid point.
       if (nextImage.x > this.panelWidth / 2) {
         let imageMidPos = this.panelWidth / 2 - nextImage.offsetWidth / 2;
-
+        // Scrolling it first at least as much as current image's width.
         this.panel.scrollLeft += currentImage.offsetWidth;
         // Adjusting slide's position to the center.
+        // At this point, next image's 'x' position prior to panel's client width has changed compared to its value when ~
+        // ~ it was used as comparison above.
         this.panel.scrollLeft += nextImage.x - imageMidPos;
       }
     }

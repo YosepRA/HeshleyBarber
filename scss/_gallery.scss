@@ -90,7 +90,7 @@ body#gallery {
         left: 20px;
 
         &::before {
-          content: '<';
+          content: '‹';
         }
       }
 
@@ -98,7 +98,7 @@ body#gallery {
         right: 20px;
 
         &::before {
-          content: '>';
+          content: '›';
         }
       }
     }
